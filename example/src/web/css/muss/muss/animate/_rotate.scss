@@ -1,0 +1,93 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: rotate
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// animate variables
+$rotate-map: (
+  rotateIn          :  (0, 0, 1, -200deg),
+  rotateInDownLeft  :  (0, 0, 1, -45deg),
+  rotateInDownRight :  (0, 0, 1, 45deg),
+  rotateInUpLeft    :  (0, 0, 1, 45deg),
+  rotateInUpRight   :  (0, 0, 1, -90deg),
+
+  rotateOut         :  (0, 0, 1, 200deg),
+  rotateOutDownLeft :  (0, 0, 1, 45deg),
+  rotateOutDownRight:  (0, 0, 1, -45deg),
+  rotateOutUpLeft   :  (0, 0, 1, -45deg),
+  rotateOutUpRight  :  (0, 0, 1, 90deg),
+);
+
+// animate rotate
+@mixin animate-rotate($name,$value,$axes-x,$axes-y,$switch:0) {
+  @include keyframes($name) {
+    @if $switch == 0 {
+      from {
+        @include transform-origin($axes-x,$axes-y);
+        @include transform(rotate3d($value));
+        opacity:0;
+      }
+      to {
+        @include transform-origin($axes-x,$axes-y);
+        @include transform;
+        opacity:1;
+      }
+    } @else {
+      from {
+        @include transform-origin($axes-x,$axes-y);
+        opacity:1;
+      }
+      to {
+        @include transform-origin($axes-x,$axes-y);
+        @include transform(rotate3d($value));
+        opacity:0;
+      }
+    }
+
+  }
+  .#{$name} {
+    @include animation-name($name);
+    @extend %animated;
+  }
+}
+
+// rotate style
+@mixin rotate-style($n,$x:50%,$y:50%,$switch:0) {
+   @include animate-rotate(get-key($rotate-map,$n),get-value($rotate-map,get-key($rotate-map,$n)),$x,$y,$switch);
+}
+
+// Rotating Entrances
+@mixin animate-rotateIn {
+  @include rotate-style(1);
+}
+@mixin animate-rotateInDownLeft {
+  @include rotate-style(2,0,100%);
+}
+@mixin animate-rotateInDownRight {
+  @include rotate-style(3,100%,100%);
+}
+@mixin animate-rotateInUpLeft {
+  @include rotate-style(4,0,100%);
+}
+@mixin animate-rotateInUpRight {
+  @include rotate-style(5,100%,100%);
+}
+
+// Rotating Exits
+@mixin animate-rotateOut {
+  @include rotate-style(6,50%,50%,1);
+}
+@mixin animate-rotateOutDownLeft {
+  @include rotate-style(7,0,100%,1);
+}
+@mixin animate-rotateOutDownRight {
+  @include rotate-style(8,100%,100%,1);
+}
+@mixin animate-rotateOutUpLeft {
+  @include rotate-style(9,0,100%,1);
+}
+@mixin animate-rotateOutUpRight {
+  @include rotate-style(10,100%,100%,1);
+}

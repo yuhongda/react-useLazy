@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Variables
+// ==========================================================================
+
+// Global Typography
+// ----------------------------------------------------------------------------
+$base-bg-color:                                 #fff;
+$base-font-family:                              sans-serif;
+$base-font-size:                                16px;
+$base-line-height:                              20px;
+$base-font-weight:                              400;
+$base-font-color:                               #585858;
+$base-link-color:                               #cd5c5c;
+
+// Headings
+// ----------------------------------------------------------------------------
+$heading-font-family:                           sans-serif;
+$h1-color:                                      #343434;
+$h2-color:                                      #343434;
+$h3-color:                                      #343434;
+$h4-color:                                      #343434;
+$h5-color:                                      #343434;
+$h6-color:                                      #343434;
+$h1-size:                                       32px;
+$h2-size:                                       26px;
+$h3-size:                                       22px;
+$h4-size:                                       18px;
+$h5-size:                                       16px;
+$h6-size:                                       14px;
+$h1-line-height:                                48px;
+$h2-line-height:                                44px;
+$h3-line-height:                                38px;
+$h4-line-height:                                36px;
+$h5-line-height:                                28px;
+$h6-line-height:                                24px;
+
+// Grid Containers
+// ----------------------------------------------------------------------------
+$screen-xs:                                     480px;
+$screen-sm:                                     720px;
+$screen-md:                                     960px;
+$screen-hd:                                     1120px;
+$screen-fd:                                     100%;     //fluid
+
+// Responsive Breakpoints
+// ----------------------------------------------------------------------------
+$breakpoint-sm:                                 ($screen-sm + 20);
+$breakpoint-md:                                 ($screen-md + 20);
+$breakpoint-hd:                                 ($screen-hd + 20);
+
+// Gird Gap
+// ----------------------------------------------------------------------------
+$base-gap:                                       15px;
+
+$base-border-radius:                             5px;
+
+// Tables
+// ----------------------------------------------------------------------------
+$table-border-color: #DDD;
+$table-td-border-color: #DDD;
+$table-th-bg: #DDD;
+$table-striped-even-bg: #FFF;
+$table-striped-odd-bg: #EEE;

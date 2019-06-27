@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+// Box Shadow
+// Usage: @include box-shadow(2px, 2px, 4px, #000);
+// Usage: @include box-shadow-inset(2px, 2px, 4px, 1px, #000);
+// --------------------------------------------------
+
+// box-shadow:X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色
+// box-shadow:h-shadow v-shadow blur spread color inset;
+@mixin box-shadow($x, $y, $blur, $color) {
+  @include prefixes(box-shadow, $x $y $blur $color, webkit moz spec);
+}
+// 内阴影
+@mixin box-shadow-inset ($x, $y, $blur, $spread, $color,$inset:inset) {
+  @include prefixes(box-shadow, $x $y $blur $spread $color $inset, webkit moz spec);
+}

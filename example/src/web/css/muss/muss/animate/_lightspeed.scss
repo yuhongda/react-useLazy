@@ -1,0 +1,51 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: lightSpeed
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// lightSpeedIn
+@mixin animate-lightSpeedIn() {
+  @include keyframes(lightSpeedIn){
+    from {
+      @include transform(translate3d(100%, 0, 0) skewX(-30deg));
+      opacity: 0;
+    }
+    60% {
+      @include transform(skewX(20deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(skewX(-5deg));
+      opacity: 1;
+    }
+    to {
+      @include transform;
+      opacity: 1;
+    }
+  }
+  .lightSpeedIn {
+    @include animation-name(lightSpeedIn);
+    @include animation-timing-function(ease-out);
+    @extend %animated;
+  }
+}
+
+// lightSpeedOut
+@mixin animate-lightSpeedOut() {
+  @include keyframes(lightSpeedOut) {
+    from  {
+      opacity: 1;
+    }
+    to {
+      @include transform(translate3d(100%, 0, 0) skewX(30deg));
+      opacity: 0;
+    }
+  }
+  .lightSpeedOut {
+    @include animation-name(lightSpeedOut);
+    @include animation-timing-function(ease-in);
+    @extend %animated;
+  }
+}

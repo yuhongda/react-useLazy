@@ -1,6 +1,6 @@
 const presets = [
   [
-    "@babel/env",
+    "@babel/preset-react",
     {
       targets: {
         edge: "17",
@@ -14,10 +14,45 @@ const presets = [
 ];
 
 const plugins = [
-  
+  ["@babel/plugin-proposal-decorators", { "legacy": true }],
+  [
+    'import',
+    {
+      libraryName: 'antd',
+      style: 'css'
+    },
+  ],
+  ['@babel/plugin-proposal-class-properties', { loose: true }],
+  ['@babel/plugin-syntax-dynamic-import']
 ];
 
 module.exports = { 
-  presets,
+  presets,  
+  env: {
+    development: {
+      presets: ['@babel/preset-env']
+    },
+    production: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            modules: false
+          }
+        ]
+      ]
+    },
+    test: {
+      presets: ['@babel/preset-env'],
+      plugins: [
+        [
+          'nornj-loader',
+          {
+            extensions: ['.t.html']
+          }
+        ]
+      ]
+    }
+  },
   plugins 
 };

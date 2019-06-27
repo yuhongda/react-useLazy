@@ -1,0 +1,264 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: bounce
+// @link: http://daneden.me/animate
+// Version: 3.4.0
+//-----------------------------------------------------
+
+
+// bounceIn
+@mixin animate-bounceIn () {
+  @include keyframes(bounceIn) {
+    from, 20%, 40%, 60%, 80%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+
+    0% {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+
+    20% {
+      @include transform(scale3d(1.1, 1.1, 1.1));
+    }
+    40% {
+      @include transform(scale3d(.9, .9, .9));
+    }
+    60% {
+      opacity: 1;
+      @include transform(scale3d(1.03, 1.03, 1.03));
+    }
+    80% {
+      @include transform(scale3d(.97, .97, .97));
+    }
+    to {
+      opacity: 1;
+      @include transform(scale3d(1, 1, 1));
+    }
+  }
+  .bounceIn {
+    @include animation-name(bounceIn);
+    @extend %animated;
+    @include animation-duration(.75s);
+  }
+}
+
+// bounceInDown
+@mixin animate-bounceInDown () {
+  @include keyframes(bounceInDown) {
+    from, 60%, 75%, 90%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    0% {
+      opacity: 0;
+      @include transform(translate3d(0, -3000px, 0));
+    }
+    60% {
+      opacity: 1;
+      @include transform(translate3d(0, 25px, 0));
+    }
+    75% {
+      @include transform(translate3d(0, -10px, 0));
+    }
+    90% {
+      @include transform(translate3d(0, 5px, 0));
+    }
+    to {
+      @include transform;
+    }
+  }
+  .bounceInDown {
+    @include animation-name(bounceInDown);
+    @extend %animated;
+  }
+}
+
+// bounceInLeft
+@mixin animate-bounceInLeft () {
+  @include keyframes(bounceInLeft) {
+    from, 60%, 75%, 90%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    0% {
+      opacity: 0;
+      @include transform(translate3d(-3000px, 0, 0));
+    }
+    60% {
+      opacity: 1;
+      @include transform(translate3d(25px, 0, 0));
+    }
+    75% {
+      @include transform(translate3d(-10px, 0, 0));
+    }
+    90% {
+      @include transform(translate3d(5px, 0, 0));
+    }
+    to {
+      @include transform;
+    }
+  }
+  .bounceInLeft {
+    @include animation-name(bounceInLeft);
+    @extend %animated;
+  }
+}
+
+// bounceInRight
+@mixin animate-bounceInRight () {
+  @include keyframes(bounceInRight) {
+    from, 60%, 75%, 90%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    from {
+      opacity: 0;
+      @include transform(translate3d(3000px, 0, 0));
+    }
+    60% {
+      opacity: 1;
+      @include transform(translate3d(-25px, 0, 0));
+    }
+    75% {
+      @include transform(translate3d(10px, 0, 0));
+    }
+    90% {
+      @include transform(translate3d(-5px, 0, 0));
+    }
+    to {
+      @include transform;
+    }
+  }
+  .bounceInRight {
+    @include animation-name(bounceInRight);
+    @extend %animated;
+  }
+}
+
+// bounceInUp
+@mixin animate-bounceInUp () {
+  @include keyframes(bounceInUp) {
+    from, 60%, 75%, 90%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    from {
+      opacity: 0;
+      @include transform(translate3d(0, 3000px, 0));
+    }
+    60% {
+      opacity: 1;
+      @include transform(translate3d(0, -20px, 0));
+    }
+    75% {
+      @include transform(translate3d(0, 10px, 0));
+    }
+    90% {
+      @include transform(translate3d(0, -5px, 0));
+    }
+    to {
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+  .bounceInUp  {
+    @include animation-name(bounceInUp);
+    @extend %animated;
+  }
+}
+
+// bounceOut
+@mixin animate-bounceOut () {
+  @include keyframes(bounceOut) {
+    20% {
+      @include transform(scale3d(.9, .9, .9));
+    }
+    50%, 55% {
+      opacity: 1;
+      @include transform(scale3d(1.1, 1.1, 1.1));
+    }
+    to {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+  }
+  .bounceOut {
+    @include animation-name(bounceOut);
+    @extend %animated;
+    @include animation-duration(.75s);
+  }
+}
+
+// bounceOutDown
+@mixin animate-bounceOutDown () {
+  @include keyframes(bounceOutDown) {
+    20% {
+      @include transform(translate3d(0, 10px, 0));
+    }
+    40%, 45% {
+      opacity: 1;
+      @include transform(translate3d(0, -20px, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform(translate3d(0, 2000px, 0));
+    }
+  }
+  .bounceOutDown {
+    @include animation-name(bounceOutDown);
+    @extend %animated;
+  }
+}
+
+// bounceOutLeft
+@mixin animate-bounceOutLeft () {
+  @include keyframes(bounceOutLeft) {
+    20% {
+      opacity: 1;
+      @include transform(translate3d(20px, 0, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform(translate3d(-2000px, 0, 0));
+    }
+  }
+  .bounceOutLeft {
+    @include animation-name(bounceOutLeft);
+    @extend %animated;
+  }
+}
+
+// bounceOutRight
+@mixin animate-bounceOutRight () {
+  @include keyframes(bounceOutRight) {
+    20% {
+      opacity: 1;
+      @include transform(translate3d(-20px, 0, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform(translate3d(2000px, 0, 0));
+    }
+  }
+  .bounceOutRight {
+    @include animation-name(bounceOutRight);
+    @extend %animated;
+  }
+}
+
+// bounceOutUp
+@mixin animate-bounceOutUp () {
+  @include keyframes(bounceOutUp) {
+    20% {
+      @include transform(translate3d(0, -10px, 0));
+    }
+    40%, 45% {
+      opacity: 1;
+      @include transform(translate3d(0, 20px, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform(translate3d(0, -2000px, 0));
+    }
+  }
+  .bounceOutUp {
+    @include animation-name(bounceOutUp);
+    @extend %animated;
+  }
+}

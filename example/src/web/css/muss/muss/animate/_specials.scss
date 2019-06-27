@@ -1,0 +1,72 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: hinge rollIn
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// hinge
+@mixin animate-hinge () {
+  @include keyframes(hinge) {
+    0% {
+      @include transform-origin(top left);
+      @include animation-timing-function(ease-in-out);
+    }
+    20%,60% {
+      @include transform(rotate3d(0, 0, 1, 80deg));
+      @include transform-origin(top left);
+      @include animation-timing-function(ease-in-out);
+    }
+    40%,80% {
+      @include transform(rotate3d(0, 0, 1, 60deg));
+      @include transform-origin(top left);
+      @include animation-timing-function(ease-in-out);
+      opacity: 1;
+    }
+    to {
+      @include transform(translate3d(0, 700px, 0));
+      opacity: 0;
+    }
+  }
+  .hinge {
+    @include animation-name(hinge);
+    @extend %animated;
+    @include animation-duration(2s);
+  }
+}
+
+// rollIn
+@mixin animate-rollIn () {
+  @include keyframes(rollIn) {
+    0% {
+      opacity: 0;
+      @include transform(translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg));
+    }
+    100% {
+      opacity: 1;
+      @include transform;
+    }
+  }
+  .rollIn {
+    @include animation-name(rollIn);
+    @extend %animated;
+  }
+}
+
+// rollOut
+@mixin animate-rollOut () {
+  @include keyframes(rollOut) {
+    0% {
+      opacity: 1;
+      @include transform;
+    }
+    100% {
+      opacity: 0;
+      @include transform(translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg));
+    }
+  }
+  .rollOut {
+    @include animation-name(rollOut);
+    @extend %animated;
+  }
+}

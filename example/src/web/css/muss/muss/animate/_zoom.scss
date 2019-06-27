@@ -1,0 +1,222 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: zoom
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// Zoom Entrances
+//-----------------------------------------------------
+
+// @type cubic-bezier
+// Timing functions courtesy of jquery.easie (github.com/jaukia/easie)
+// Demo: http://jqueryui.com/resources/demos/effect/easing.html
+$ease-in-cubic:  cubic-bezier(0.550,  0.055, 0.675, 0.190);
+$ease-out-back:  cubic-bezier(0.175,  0.885, 0.320, 1.000);
+
+// sclae3d
+$scale3d-1    :  scale3d(.1, .1, .1);
+$scale3d-2    :  scale3d(.475, .475, .475);
+$scale3d-3    :  scale3d(.3, .3, .3);
+
+// zoomIn
+@mixin animate-zoomIn() {
+  @include keyframes(zoomIn) {
+    from {
+      opacity: 0;
+      @include transform($scale3d-3);
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .zoomIn {
+    @include animation-name(zoomIn);
+    @extend %animated;
+  }
+}
+
+// zoomInDown
+@mixin animate-zoomInDown() {
+  @include keyframes(zoomInDown) {
+    from {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(0, -1000px, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    60% {
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(0, 60px, 0));
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomInDown {
+    @include animation-name(zoomInDown);
+    @extend %animated;
+  }
+}
+
+// zoomInLeft
+@mixin animate-zoomInLeft() {
+  @include keyframes(zoomInLeft) {
+    from {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(-1000px, 0, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    60% {
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(10px, 0, 0));
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomInLeft {
+    @include animation-name(zoomInLeft);
+    @extend %animated;
+  }
+}
+
+// zoomInRight
+@mixin animate-zoomInRight() {
+  @include keyframes(zoomInRight) {
+    from {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(1000px, 0, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    60% {
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(-10px, 0, 0));
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomInRight {
+    @include animation-name(zoomInRight);
+    @extend %animated;
+  }
+}
+
+// zoomInUp
+@mixin animate-zoomInUp() {
+  @include keyframes(zoomInUp) {
+    from {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(0, 1000px, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    60% {
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(0, -60px, 0));
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomInUp {
+    @include animation-name(zoomInUp);
+    @extend %animated;
+  }
+}
+
+
+// Zoom Exits
+//-----------------------------------------------------
+
+// zoomOut
+@mixin animate-zoomOut() {
+  @include keyframes(zoomOut) {
+    from {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+      @include transform($scale3d-3);
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  .zoomOut {
+    @include animation-name(zoomOut);
+    @extend %animated;
+  }
+}
+
+// zoomOutDown
+@mixin animate-zoomOutDown() {
+  @include keyframes(zoomOutDown) {
+    40% {
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(0, -60px, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    to {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(0, 2000px, 0));
+      @include transform-origin(center bottom);
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomOutDown {
+    @include animation-name(zoomOutDown);
+    @extend %animated;
+  }
+}
+
+
+// zoomOutLeft
+@mixin animate-zoomOutLeft() {
+  @include keyframes(zoomOutLeft) {
+    40%{
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(42px, 0, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(-2000px, 0, 0));
+      @include transform-origin(left center);
+    }
+  }
+  .zoomOutLeft {
+    @include animation-name(zoomOutLeft);
+    @extend %animated;
+  }
+}
+
+// zoomOutRight
+@mixin animate-zoomOutRight() {
+  @include keyframes(zoomOutRight) {
+    40%{
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(-42px, 0, 0));
+    }
+    to {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(2000px, 0, 0));
+      @include transform-origin(right center);
+    }
+  }
+  .zoomOutRight {
+    @include animation-name(zoomOutRight);
+    @extend %animated;
+  }
+}
+
+// zoomOutUp
+@mixin animate-zoomOutUp() {
+  @include keyframes(zoomOutUp) {
+    40%{
+      opacity: 1;
+      @include transform($scale3d-2 translate3d(0, 60px, 0));
+      @include animation-timing-function($ease-in-cubic);
+    }
+    to {
+      opacity: 0;
+      @include transform($scale3d-1 translate3d(2000px, 0, 0));
+      @include transform-origin(center bottom);
+      @include animation-timing-function($ease-out-back);
+    }
+  }
+  .zoomOutUp {
+    @include animation-name(zoomOutUp);
+    @extend %animated;
+  }
+}

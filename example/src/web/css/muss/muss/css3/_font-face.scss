@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+// font-face
+// Usage:   @include font-face(FontAwesome, '../font-face/fonts/fontawesome-webfont');
+// ----------------------------------------------------------------------------
+
+@mixin font-face($fontFamily, $filePath ) {
+  @font-face {
+    font-family: $fontFamily;
+    font-weight: normal;
+    font-style: normal;
+    src: url('#{$filePath}.eot');
+    src: url('#{$filePath}.eot')                      format('eot'),
+         url('#{$filePath}.svg##{$fontFamily}')       format('svg'),
+         url('#{$filePath}.woff')                     format('woff'),
+         url('#{$filePath}.ttf')                      format('truetype');
+  }
+}

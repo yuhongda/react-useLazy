@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+// Retina image
+// Usage: @include image-2x(url1, url2, 100px, 100px);
+// --------------------------------------------------
+
+@mixin image-2x($img-url-1x, $img-url-2x, $width-1x, $height-1x) {
+  background-image: url($img-url-1x);
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url($img-url-2x);
+    background-size: $width-1x $height-1x;
+  }
+}

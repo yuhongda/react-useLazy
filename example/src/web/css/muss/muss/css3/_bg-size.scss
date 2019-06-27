@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// Background-size
+// Usage: @include bg-size(100%);
+// --------------------------------------------------
+
+@mixin bg-size($width, $height: $width) {
+    // <length> | auto | cover | contain
+    @include prefixes(background-size, $width $height, webkit moz spec);
+}

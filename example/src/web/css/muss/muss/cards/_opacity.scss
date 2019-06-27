@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// opacity
+// Usage: @include opacity(0.5);
+// -------------------------------------------------------
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+}

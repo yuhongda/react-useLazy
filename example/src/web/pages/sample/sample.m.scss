@@ -1,0 +1,22 @@
+﻿.sample {
+    height: 100%;
+    .pageCnt{
+        padding:20px;
+        background: #fff;
+        border-radius:4px;
+        height: 100%;
+        box-sizing: border-box;
+        .testDiv{
+            width: calc(100vh - 100px); height: calc(100vh - 100px);background:#f1f1f1;margin: 0 auto;
+        }
+    }
+    .pageTitle{
+        font-size: rem(32);font-weight: normal;position:relative;line-height:100%;padding:0 0 10px 0;
+        border-bottom:1px solid #eee;
+        // &:before{content:'';position: absolute;left:0;height:18px;width:3px;background: #3b95e1;}
+    }
+
+
+    :global{
+    }
+}

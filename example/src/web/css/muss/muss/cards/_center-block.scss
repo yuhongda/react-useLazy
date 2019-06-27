@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// center-block
+// Usage: @include center-block;
+// -------------------------------------------------------
+
+@mixin center-block {
+    margin-left: auto;
+    margin-right: auto;
+}

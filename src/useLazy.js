@@ -10,7 +10,7 @@ function chunkArray(array, size) {
     return chunked_arr;
 }
 
-export function useLazy(report) {
+function useLazy(report) {
     const reportDataKeyList = chunkArray(report.reportData && report.reportData.map(item => item.key), 5);
     // const [ currentKeyList, setCurrentKeyList ] = useState([]);
 
@@ -52,4 +52,8 @@ export function useLazy(report) {
     }
 
     // return currentKeyList;
+}
+
+export {
+    useLazy
 }

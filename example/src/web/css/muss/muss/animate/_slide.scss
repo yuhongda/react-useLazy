@@ -1,0 +1,79 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: slide
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// animate variables
+$slide-map: (
+  slideInDown     :  (0, -100%, 0),
+  slideInLeft     :  (-100%, 0, 0),
+  slideInRight    :  (100%, 0, 0),
+  slideInUp       :  (0, 100%, 0),
+
+  slideOutDown    :  (0, 100%, 0),
+  slideOutLeft    :  (-100%, 0, 0),
+  slideOutRight   :  (100%, 0, 0),
+  slideOutUp      :  (0, -100%, 0)
+);
+
+// animate style
+@mixin animate-slide($name,$value,$switch:0) {
+  @include keyframes($name) {
+    @if $switch == 0 {
+      from {
+        @include transform(translate3d($value));
+        visibility: visible;
+      }
+      to {
+        @include transform(translate3d(0, 0, 0));
+      }
+    } @else {
+      from {
+        @include transform(translate3d(0, 0, 0));
+      }
+      to {
+        @include transform(translate3d($value));
+        visibility: visible;
+      }
+    }
+  }
+  .#{$name} {
+    @include animation-name($name);
+    @extend %animated;
+  }
+}
+
+// slide style
+@mixin slide-style($n,$switch:0) {
+  @include animate-slide(get-key($slide-map,$n),get-value($slide-map,get-key($slide-map,$n)),$switch);
+}
+
+// Sliding Entrances
+@mixin animate-slideInDown {
+  @include slide-style(1);
+}
+@mixin animate-slideInLeft {
+  @include slide-style(2);
+}
+@mixin animate-slideInRight {
+  @include slide-style(3);
+}
+@mixin animate-slideInUp {
+  @include slide-style(4);
+}
+
+// Sliding Exits
+@mixin animate-slideOutDown {
+  @include slide-style(5,1);
+}
+@mixin animate-slideOutLeft {
+  @include slide-style(6,1);
+}
+@mixin animate-slideOutRight {
+  @include slide-style(7,1);
+}
+@mixin animate-slideOutUp {
+  @include slide-style(8,1);
+}

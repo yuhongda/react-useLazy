@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Global
+// ==========================================================================
+
+body {
+  @include font-all($base-font-size, $base-line-height, $base-font-color);
+  background: $base-bg-color;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,*:before,*:after { box-sizing: inherit; }
+
+a {
+  color: $base-link-color;
+  background: transparent;
+  text-decoration: underline;
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+em, .em {
+  font-style: italic;
+}
+
+hr, .hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 1px;
+  background: #eee;
+  border: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

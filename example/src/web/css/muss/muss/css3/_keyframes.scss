@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+// Keyframes
+// @keyframes animationname {keyframes-selector {css-styles;}}
+// Usage:
+//     @include keyframes(fadeIn) {
+//        from {
+//           height:100px;
+//       }
+//         to {
+//           height:200px;
+//       }
+//   }
+// --------------------------------------------------
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @keyframes #{$name} {
+      @content;
+    }
+}

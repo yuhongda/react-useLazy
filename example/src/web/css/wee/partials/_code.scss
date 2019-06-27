@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Code
+// ==========================================================================
+
+// Code
+// --------------------------------------------------------------------------
+code, kbd, pre, samp {
+  @include font-all(12px,18px,#fff);
+  @include word-wrap;
+  background-color: #272727;
+  padding: 5px 10px;
+  white-space: pre-wrap;
+}
+pre {
+  padding: 10px;
+  overflow: auto;
+}

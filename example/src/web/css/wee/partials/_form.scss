@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Form
+// ==========================================================================
+
+// Form
+.form {
+  @include padding-all(1em, null, 1em, null);
+}
+
+// Checkbox and Radio
+.checkbox,
+.radio {
+  display: inline-block;
+  position: relative;
+  @include padding-all(.5em, null, .5em, null);
+  label {
+    @include padding-all(0, null, null, 20px);
+    display: inline-block;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: absolute;
+    top: 4px;
+    left: 0;
+  }
+}
+
+// Placeholder color
+::-webkit-input-placeholder { color: #999; }
+:-moz-placeholder { color: #999; }
+::-moz-placeholder { color: #999; }
+:-ms-input-placeholder { color: #999; }

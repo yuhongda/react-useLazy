@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+// Typography
+// ------------------------------------------------------------
+$font-size-base: 16px !default;
+$line-height-base: 1.5 !default;
+
+
+// Font family
+// ------------------------------------------------------------
+// Georgia 字体
+$georgia: "Georgia", "Cambria", "Times New Roman", "Times", serif;
+// helvetica 字体
+$helvetica: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+//MAC OSX 默认西文字体 无衬线字体
+$lucida: "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+// 中文字体，华文黑体，雅黑，黑体，宋体
+$yahei:  "STHeiti", "Microsoft YaHei","微软雅黑", "SimHei", "SimSun","宋体", sans-serif;
+
+
+// Default space
+// ------------------------------------------------------------
+$space-base: 20px !default;
+
+
+// Screen sizes
+// ------------------------------------------------------------
+$screen-xs: 480px !default;
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+$screen-lg: 1200px !default;
+
+
+// Color
+// ------------------------------------------------------------
+$gray-base:              #000 !default;
+$gray-darker:            #333 !default;
+$gray-dark:              #555 !default;
+$gray:                   #777 !default;
+$gray-light:             #ccc !default;
+$gray-lighter:           #eee !default;

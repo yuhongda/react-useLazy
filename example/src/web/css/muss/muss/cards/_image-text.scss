@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+// Image replacement
+// Usage: @include image-text;
+// --------------------------------------------------
+
+@mixin image-text {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    @if $prefix-for-microsoft {
+        *text-indent: -150%;
+    }
+
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}

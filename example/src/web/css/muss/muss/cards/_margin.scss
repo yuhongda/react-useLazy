@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+// Margin
+// Usage shorthand: @include margin(1px 2px 3px 4px);
+// Usage longhand: @include margin-all(1px, 2px, 3px, 4px);
+// --------------------------------------------------
+
+// Margin shorthand version
+@mixin margin($value) {
+  margin: $value;
+}
+
+// Margin longhand version
+@mixin margin-all($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}

@@ -1,0 +1,16 @@
+{
+  "name"        : "creative-center",  // 应用名称
+  "script"      : "./server/app.js",  // 实际启动脚本
+  "cwd"         : "./",  // 当前工作路径
+  "watch": [  // 监控变化的目录，一旦变化，自动重启
+    "server"
+  ],
+  "ignore_watch" : [  // 从监控目录中排除
+    "node_modules", 
+    "logs",
+    "public"
+  ],
+  "watch_options": {
+    "followSymlinks": false
+  }
+}

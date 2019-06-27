@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Images
+// ==========================================================================
+
+
+img {
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+img.responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+img.round {
+  @include border-radius(10px);
+}
+img.thumbnail {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  line-height: $base-line-height;
+  background-color: transparent;
+  @include padding(4px);
+  @include border(1px solid #ddd);
+  @include border-radius(4px);
+  @include transition(all .2s ease-in-out);
+}
+img.circle {
+  @include border-radius(50%);
+}

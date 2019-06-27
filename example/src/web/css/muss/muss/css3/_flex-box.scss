@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+// Flex box
+// 目前仅 Firefox、Safari、Opera、Chrome 支持以下属性,IE不支持
+// ----------------------------------------------------------------------------
+
+
+// 规定如何对齐框的子元素
+@mixin box-align($align: center) {
+  // start | end | center | baseline | stretch
+  @include prefixes(box-align, $align, webkit moz);
+}
+
+// 规定框的子元素的显示方向
+@mixin box-direction($direction: normal) {
+  // normal | reverse | inherit
+  @include prefixes(box-direction, $direction, webkit moz);
+}
+
+// 规定框的子元素是否可伸缩
+@mixin box-flex($value: 0) {
+  // normal | reverse | inherit
+  @include prefixes(box-flex, $value, webkit moz);
+}
+
+// 规定框的子元素的显示次序
+@mixin box-ordinal-group($value: 1) {
+  @include prefixes(box-ordinal-group, $value, webkit moz);
+}
+
+// 规定框的子元素是否应水平或垂直排列
+@mixin box-orient($orient: inline-axis) {
+  // horizontal | vertical | inline-axis | block-axis | inherit
+  @include prefixes(box-orient, $orient, webkit moz);
+}
+
+// 规定水平框中的水平位置或者垂直框中的垂直位置
+@mixin box-pack($location: start) {
+  // start | end | center | justify
+  @include prefixes(box-pack, $location, webkit moz);
+}

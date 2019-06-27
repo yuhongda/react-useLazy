@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+// Perspective
+//-------------------------------------------------------------
+
+// 规定 3D 元素的透视效果
+@mixin perspective($depth: none) {
+  // none | <length>
+  @include prefixes(perspective, $depth);
+}
+
+// 规定 3D 元素的底部位置
+@mixin perspective-origin($value: 50% 50%) {
+  // x-axis - left | center | right  | length | %
+  // y-axis - top  | center | bottom | length | %
+  @include prefixes(perspective-origin, $value);
+}
+// 定义元素在不面对屏幕时是否可见
+@mixin backface-visibility($visibility:hidden){
+  // visible | hidden
+  @include prefixes(backface-visibility, $visibility, webkit spec);
+}

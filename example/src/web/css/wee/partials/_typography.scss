@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – Typography
+// ==========================================================================
+
+
+// List Types
+// --------------------------------------------------------------------------
+
+dl {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  dt {
+    float: left;
+    width: 25%;
+    display: block;
+    font-weight: 400;
+  }
+  dd {
+    overflow: hidden;
+    display: block;
+  }
+}
+
+// Paragraph
+// --------------------------------------------------------------------------
+p {
+  margin: 0.25em 0;
+}
+
+// Heading
+// --------------------------------------------------------------------------
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 0;
+}
+h1, .h1 {
+  @include font-all($h1-size, $h1-line-height, $h1-color);
+  @include margin-all(.7em, null, .5em, null);
+}
+h2, .h2 {
+  @include font-all($h2-size, $h2-line-height, $h2-color);
+  @include margin-all(1.4em, null, .2em, null);
+}
+h3, .h3 {
+  @include font-all($h3-size, $h3-line-height, $h3-color);
+  @include margin-all(1em, null, .2em, null);
+}
+h4, .h4 {
+  @include font-all($h4-size, $h4-line-height, $h4-color);
+  @include margin-all(1em, null, .2em, null);
+}
+h5, .h5 {
+  @include font-all($h5-size, $h5-line-height, $h5-color);
+  @include margin-all(1em, null, .1em, null);
+}
+h6, .h6 {
+  @include font-all($h6-size, $h6-line-height, $h6-color);
+  @include margin-all(1em, null, .1em, null);
+}
+
+// Blockquote
+// --------------------------------------------------------------------------
+blockquote, .blockquote {
+  color: #424242;
+  font-style: italic;
+  margin: 3em 0;
+  p {
+    @include font-size(22px);
+    @include line-height(28px);
+    padding-left:20px;
+    border-left:4px solid #ccc;
+    margin-bottom: .4em;
+  }
+  cite {
+    @include font-all(12px,18px,#999);
+    font-style: normal;
+    &:before {
+      content: '\2014 \0020';
+    }
+  }
+}
+
+// Alignment
+// --------------------------------------------------------------------------
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}

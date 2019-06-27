@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+// Padding
+// Usage shorthand: @include padding(1px 2px 3px 4px);
+// Usage longhand: @include padding-all(1px, 2px, 3px, 4px);
+// --------------------------------------------------
+
+// Padding shorthand version
+@mixin padding($value) {
+  padding: $value;
+}
+
+// Padding longhand version
+@mixin padding-all($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}

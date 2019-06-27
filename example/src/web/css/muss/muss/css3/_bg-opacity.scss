@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// Background
+// Usage: @include bg-opacity(#000,0.68);
+// --------------------------------------------------
+
+// Background Opacity
+@mixin bg-opacity($color, $opacity) {
+  background: $color;
+  background: rgba($color, $opacity);
+}

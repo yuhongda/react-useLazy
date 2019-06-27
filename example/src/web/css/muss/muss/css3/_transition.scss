@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+// Transition
+// @transition: property duration timing-function delay;
+// Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.
+// Usage: @include transition(all 1.0s ease-in-out);
+//        @include transition-property(transform);
+//        @include transition-duration(2.0s);
+//        @include transition-timing-function(ease-in);
+//        @include transition-delay(0.5s);
+//-------------------------------------------------------------
+
+@mixin transition($properties...) {
+  @include prefixes(transition, $properties, webkit moz spec);
+}
+
+// 1 规定设置过渡效果的 CSS 属性的名称
+@mixin transition-property($properties...) {
+  // none | all | property
+  // @link http://www.w3.org/TR/css3-transitions/#properties-from-css-
+  @include prefixes(transition-property, $properties, webkit moz spec);
+}
+
+// 2 规定完成过渡效果需要多少秒或毫秒
+@mixin transition-duration($times...) {
+  @include prefixes(transition-duration, $times, webkit moz spec);
+}
+
+// 3 规定速度效果的速度曲线
+@mixin transition-timing-function($motions...) {
+  // 逐渐变慢 | 匀速 | 加速 | 减速 | 加速然后减速 | cubic-bezier(x1, y1, x2, y2)
+  // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+  @include prefixes(transition-timing-function, $motions, webkit moz spec);
+}
+
+// 4 定义过渡效果的延迟时间
+@mixin transition-delay($times...) {
+  @include prefixes(transition-delay, $times, webkit moz spec);
+}

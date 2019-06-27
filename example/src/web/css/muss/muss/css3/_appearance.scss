@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// Appearance
+// Usage: @include appearance;
+// --------------------------------------------------
+
+@mixin appearance($value: button) {
+  //  normal | icon | window | button | menu | field
+  @include prefixes(appearance, $value, webkit moz spec);
+}

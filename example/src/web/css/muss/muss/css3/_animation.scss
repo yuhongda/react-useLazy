@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+// Animation
+// 1 Usage: @include animation(myMove 1.0s ease-in, slide 2.0s ease);
+// 2 Usage: @include animation-name(myMove, slide);
+// 3 Usage: @include animation-duration(2s);
+// 4 Usage: @include animation-timing-function(ease);
+// 5 Usage: @include animation-iteration-count(infinite);
+// 6 Usage: @include animation-direction(alternate);
+// 7 Usage: @include animation-play-state(paused);
+// 8 Usage: @include animation-delay(2s);
+// 9 Usage: @include animation-fill-mode(backwards);
+// --------------------------------------------------
+
+// 1 所有动画属性的简写属性，除了 animation-play-state 属性。
+@mixin animation($animations...) {
+  //name duration timing-function delay iteration-count direction;
+  @include prefixes(animation, $animations, webkit spec);
+}
+
+// 2 规定需要绑定到选择器的 keyframe 名称
+@mixin animation-name($names...) {
+  @include prefixes(animation-name, $names, webkit spec);
+}
+
+// 3 规定完成动画所花费的时间，以秒或毫秒计
+@mixin animation-duration($times...) {
+  @include prefixes(animation-duration, $times, webkit spec);
+}
+
+// 4 规定动画的速度曲线
+@mixin animation-timing-function($motions...) {
+  // ease | linear | ease-in | ease-out | ease-in-out
+  @include prefixes(animation-timing-function, $motions, webkit spec);
+}
+
+// 5 规定动画应该播放的次数
+@mixin animation-iteration-count($values...) {
+  // infinite | <number>
+  @include prefixes(animation-iteration-count, $values, webkit spec);
+}
+
+// 6 规定是否应该轮流反向播放动画
+@mixin animation-direction($directions...) {
+  // normal | alternate
+  @include prefixes(animation-direction, $directions, webkit spec);
+}
+
+// 7 规定动画是否正在运行或暂停
+@mixin animation-play-state($states...) {
+  // running | paused
+  @include prefixes(animation-play-state, $states, webkit spec);
+}
+
+// 8 规定在动画开始之前的延迟。
+@mixin animation-delay($times...) {
+  @include prefixes(animation-delay, $times, webkit spec);
+}
+
+// 9 规定对象动画时间之外的状态
+@mixin animation-fill-mode($modes...) {
+  // none | forwards | backwards | both
+  @include prefixes(animation-fill-mode, $modes, webkit spec);
+}
+
+// For animate
+%animated {
+  @include animation-duration(1s);
+  @include animation-fill-mode(both);
+}

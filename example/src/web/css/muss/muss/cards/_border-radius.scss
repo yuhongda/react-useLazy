@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+// Border Radius
+// All Side Usage: @include border-radius(10px 20px 30px 40px);
+// Single Side Usage: @include border-top-radius(20px);
+//------------------------------------------------------
+
+// All sides
+@mixin border-radius ($rds: 5px){
+   @include prefixes(border-radius, $rds, webkit moz spec);
+}
+
+//Single sides
+@mixin border-top-radius($rds) {
+  border-top-left-radius: $rds;
+  border-top-right-radius: $rds;
+}
+
+@mixin border-right-radius($rds) {
+  border-bottom-right-radius: $rds;
+  border-top-right-radius: $rds;
+}
+
+@mixin border-bottom-radius($rds) {
+  border-bottom-left-radius: $rds;
+  border-bottom-right-radius: $rds;
+}
+
+@mixin border-left-radius($rds) {
+  border-bottom-left-radius: $rds;
+  border-top-left-radius: $rds;
+}

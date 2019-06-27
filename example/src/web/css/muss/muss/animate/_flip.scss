@@ -1,0 +1,143 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: flip
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// flip
+@mixin animate-flip () {
+  @include keyframes(flip) {
+    0% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -360deg));
+      @include animation-timing-function(ease-out);
+    }
+    40% {
+      @include transform(perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg));
+      @include animation-timing-function(ease-out);
+    }
+    50% {
+      @include transform(perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg));
+      @include animation-timing-function(ease-in);
+    }
+    80% {
+      @include transform(perspective(400px) scale3d(.95, .95, .95));
+      @include animation-timing-function(ease-in);
+    }
+    100% {
+      @include transform(perspective(400px));
+      @include animation-timing-function(ease-in);
+    }
+  }
+  .flip {
+    @include backface-visibility(visible);
+    @include animation-name(flip);
+    @extend %animated;
+  }
+}
+
+// flipInX
+@mixin animate-flipInX () {
+  @include keyframes(flipInX) {
+    0% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 90deg));
+      @include animation-timing-function(ease-in);
+      opacity: 0;
+    }
+    40% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -20deg));
+      @include animation-timing-function(ease-in);
+    }
+    60% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 10deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -5deg));
+    }
+    100% {
+      @include transform(perspective(400px));
+    }
+  }
+  .flipInX {
+    @include animation-name(flipInX);
+    @include backface-visibility(visible);
+    @extend %animated;
+  }
+}
+
+// flipInY
+@mixin animate-flipInY () {
+  @include keyframes(flipInY) {
+    0% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 90deg));
+      @include animation-timing-function(ease-in);
+      opacity: 0;
+    }
+    40% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -20deg));
+      @include animation-timing-function(ease-in);
+    }
+    60% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 10deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -5deg));
+    }
+    100% {
+      @include transform(perspective(400px));
+    }
+  }
+  .flipInY {
+    @include animation-name(flipInY);
+    @include backface-visibility(visible);
+    @extend %animated;
+  }
+}
+
+// flipOutX
+@mixin animate-flipOutX () {
+  @include keyframes(flipOutX) {
+    0% {
+      @include transform(perspective(400px));
+    }
+    30% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -20deg));
+      opacity: 1;
+    }
+    100% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 90deg));
+      opacity: 0;
+    }
+  }
+  .flipOutX {
+    @include animation-name(flipOutX);
+    @include backface-visibility(visible);
+    @extend %animated;
+    @include animation-duration(.75s);
+  }
+}
+
+// flipOutY
+@mixin animate-flipOutY () {
+  @include keyframes(flipOutY) {
+    0% {
+      @include transform(perspective(400px));
+    }
+    30% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -15deg));
+      opacity: 1;
+    }
+    100% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 90deg));
+      opacity: 0;
+    }
+  }
+  .flipOutY {
+    @include backface-visibility(visible);
+    @include animation-name(flipOutY);
+    @extend %animated;
+    @include animation-duration(.75s);
+  }
+}

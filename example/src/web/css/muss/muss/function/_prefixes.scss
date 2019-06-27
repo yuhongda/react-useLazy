@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+// 根据不同的浏览器，生成不同的前缀，包括webkit，moz，ms，o，spec，
+// Usage: @include prefixer(border-radius, 10px, webkit moz spec);
+// Output:  -webkit-border-radius: 10px;
+//          -moz-border-radius: 10px;
+//          border-radius: 10px;
+// -------------------------------------------------------------------
+
+@mixin prefixes ($property, $value, $prefixes: webkit moz ms o spec) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property}: $value;
+    }
+    @else if $prefix == spec and $prefix-for-spec == true {
+      #{$property}: $value;
+    }
+    @else {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}

@@ -1,0 +1,235 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: attention seekers
+// @link: http://daneden.me/animate
+// Version: 3.4.0
+//-----------------------------------------------------
+
+// bounce
+@mixin animate-bounce () {
+  @include keyframes(bounce) {
+    from, 20%, 53%, 80%, to {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+      @include transform(translate3d(0,0,0));
+    }
+    40%, 43% {
+      @include animation-timing-function(cubic-bezier(0.755, 0.050, 0.855, 0.060));
+      @include transform(translate3d(0, -30px, 0));
+    }
+    70% {
+      @include animation-timing-function(cubic-bezier(0.755, 0.050, 0.855, 0.060));
+      @include transform(translate3d(0, -15px, 0));
+    }
+    90% {
+      @include transform(translate3d(0,-4px,0));
+    }
+  }
+  .bounce {
+    @include animation-name(bounce);
+    @extend %animated;
+  }
+}
+
+// flash
+@mixin animate-flash () {
+  @include keyframes(flash) {
+      from, 50%, to {
+      opacity: 1;
+    }
+
+    25%, 75% {
+      opacity: 0;
+    }
+  }
+  .flash {
+    @include animation-name(flash);
+    @extend %animated;
+  }
+}
+
+// pulse
+@mixin animate-pulse () {
+  @include keyframes(pulse){
+    from {
+      @include transform(scale3d(1, 1, 1));
+    }
+    50% {
+      @include transform(scale3d(1.05, 1.05, 1.05));
+    }
+    to {
+      @include transform(scale3d(1, 1, 1));
+    }
+  }
+  .pulse {
+    @include animation-name(pulse);
+    @extend %animated;
+  }
+}
+
+// rubberBand
+@mixin animate-rubberBand () {
+  @include keyframes(rubberBand) {
+    from {
+      @include transform(scale3d(1, 1, 1));
+    }
+    30% {
+      @include transform(scale3d(1.25, 0.75, 1));
+    }
+    40% {
+      @include transform(scale3d(0.75, 1.25, 1));
+    }
+    50% {
+      @include transform(scale3d(1.15, 0.85, 1));
+    }
+    65% {
+      @include transform(scale3d(.95, 1.05, 1));
+    }
+    75% {
+      @include transform(scale3d(1.05, .95, 1));
+    }
+    to {
+      @include transform(scale3d(1, 1, 1));
+    }
+  }
+  .rubberBand {
+    @include animation-name(rubberBand);
+    @extend %animated;
+  }
+}
+
+// shake
+@mixin animate-shake () {
+  @include keyframes(shake){
+    from, to {
+      @include transform(translate3d(0, 0, 0));
+    }
+    10%, 30%, 50%, 70%, 90% {
+      @include transform(translate3d(-10px, 0, 0));
+    }
+    20%, 40%, 60%, 80% {
+      @include transform(translate3d(10px, 0, 0));
+    }
+  }
+  .shake {
+    @include animation-name(shake);
+    @extend %animated;
+  }
+}
+
+// swing
+@mixin animate-swing () {
+  @include keyframes(swing){
+    20% {
+      @include transform(rotate3d(0, 0, 1, 15deg));
+    }
+    40% {
+      @include transform(rotate3d(0, 0, 1, -10deg));
+    }
+    60% {
+      @include transform(rotate3d(0, 0, 1, 5deg));
+    }
+    80% {
+      @include transform(rotate3d(0, 0, 1, -5deg));
+    }
+    to {
+      @include transform(rotate3d(0, 0, 1, 0deg));
+    }
+  }
+  .swing {
+    @include transform-origin(top center);
+    @include animation-name(swing);
+    @extend %animated;
+  }
+}
+
+// tada
+@mixin animate-tada () {
+  @include keyframes(tada){
+    from {
+      @include transform(scale3d(1, 1, 1));
+    }
+    10%, 20% {
+      @include transform(scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg));
+    }
+    30%, 50%, 70%, 90% {
+      @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg));
+    }
+    40%, 60%, 80% {
+      @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg));
+    }
+    to {
+      @include transform(scale3d(1, 1, 1));
+    }
+  }
+  .tada {
+    @include animation-name(tada);
+    @extend %animated;
+  }
+}
+
+// wobble
+@mixin animate-wobble () {
+  @include keyframes(wobble){
+    from {
+      @include transform;
+    }
+    15% {
+      @include transform(translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg));
+    }
+    30% {
+      @include transform(translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg));
+    }
+    45% {
+      @include transform(translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg));
+    }
+    60% {
+      @include transform(translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg));
+    }
+    75% {
+      @include transform(translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg));
+    }
+    to {
+      @include transform;
+    }
+  }
+  .wobble {
+    @include animation-name(wobble);
+    @extend %animated;
+  }
+}
+
+// jello
+@mixin animate-jello () {
+  @include keyframes(jello) {
+    from, 11.1%, to {
+      @include transform;
+    }
+    22.2% {
+      @include transform(skewX(-12.5deg) skewY(-12.5deg));
+    }
+
+    33.3% {
+      @include transform(skewX(6.25deg) skewY(6.25deg));
+    }
+    44.4% {
+      @include transform(skewX(-3.125deg) skewY(-3.125deg));
+    }
+    55.5% {
+      @include transform(skewX(1.5625deg) skewY(1.5625deg));
+    }
+    66.6% {
+      @include transform(skewX(-0.78125deg) skewY(-0.78125deg));
+    }
+    77.7% {
+      @include transform(skewX(0.390625deg) skewY(0.390625deg));
+    }
+    88.8% {
+      @include transform(skewX(-0.1953125deg) skewY(-0.1953125deg));
+    }
+  }
+  .jello {
+    @include animation-name(jello);
+    @include transform-origin(center);
+    @extend %animated;
+  }
+}

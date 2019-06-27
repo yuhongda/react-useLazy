@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// hide text
+// Usage: @include hide-text;
+// -------------------------------------------------------
+
+@mixin hide-text() {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}

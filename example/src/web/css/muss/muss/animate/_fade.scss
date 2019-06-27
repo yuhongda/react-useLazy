@@ -1,0 +1,115 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// Animate: fade
+// @link: http://daneden.me/animate | Version: 3.4.0
+// MIT license
+//-----------------------------------------------------
+
+// animate variables
+$fade-map: (
+  fadeIn          :  null,
+  fadeInDown      :  (0, -100%, 0),
+  fadeInDownBig   :  (0, -2000px, 0),
+  fadeInLeft      :  (-100%, 0, 0),
+  fadeInLeftBig   :  (-2000px, 0, 0),
+  fadeInRight     :  (100%, 0, 0),
+  fadeInRightBig  :  (2000px, 0, 0),
+  fadeInUp        :  (0, 100%, 0),
+  fadeInUpBig     :  (0, 2000px, 0),
+
+  fadeOut         :  null,
+  fadeOutDown     :  (0, 100%, 0),
+  fadeOutDownBig  :  (0, 2000px, 0),
+  fadeOutLeft     :  (-100%, 0, 0),
+  fadeOutLeftBig  :  (-2000px, 0, 0),
+  fadeOutRight    :  (100%, 0, 0),
+  fadeOutRightBig :  (2000px, 0, 0),
+  fadeOutUp       :  (0, -100%, 0),
+  fadeOutUpBig    :  (0, -2000px, 0)
+);
+
+// animate fade
+@mixin animate-fade($name,$value,$opc-star:0,$opc-end:1) {
+  //  name | value | start-opacity | end-opacity
+  @include keyframes($name) {
+    from {
+      opacity: $opc-star;
+      @if $value != null {
+        @include transform(translate3d($value));
+      }
+    }
+    to {
+      opacity: $opc-end;
+      @if $value != null {
+        @include transform;
+      }
+    }
+  }
+  .#{$name} {
+    @include animation-name($name);
+    @extend %animated;
+  }
+}
+
+// fade style
+@mixin fade-style($n,$opc-satr:0,$opc-end:1) {
+    @include animate-fade(get-key($fade-map,$n),get-value($fade-map,get-key($fade-map,$n)),$opc-satr,$opc-end);
+}
+
+// Fading Entrances
+@mixin animate-fadeIn {
+  @include fade-style(1);
+}
+@mixin animate-fadeInDown {
+  @include fade-style(2);
+}
+@mixin animate-fadeInDownBig {
+  @include fade-style(3);
+}
+@mixin animate-fadeInLeft {
+  @include fade-style(4);
+}
+@mixin animate-fadeInLeftBig {
+  @include fade-style(5);
+}
+@mixin animate-fadeInRight {
+  @include fade-style(6);
+}
+@mixin animate-fadeInRightBig {
+  @include fade-style(7);
+}
+@mixin animate-fadeInUp {
+  @include fade-style(8);
+}
+@mixin animate-fadeInUpBig {
+  @include fade-style(9);
+}
+
+// Fading Exits
+@mixin animate-fadeOut {
+  @include fade-style(10,1,0);
+}
+@mixin animate-fadeOutDown {
+  @include fade-style(11,1,0);
+}
+@mixin animate-fadeOutDownBig {
+  @include fade-style(12,1,0);
+}
+@mixin animate-fadeOutLeft {
+  @include fade-style(13,1,0);
+}
+@mixin animate-fadeOutLeftBig {
+  @include fade-style(14,1,0);
+}
+@mixin animate-fadeOutRight {
+  @include fade-style(15,1,0);
+}
+@mixin animate-fadeOutRightBig {
+  @include fade-style(16,1,0);
+}
+@mixin animate-fadeOutUp {
+  @include fade-style(17,1,0);
+}
+@mixin animate-fadeOutUpBig {
+  @include fade-style(18,1,0);
+}

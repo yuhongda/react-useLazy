@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// size
+// Usage: @include size(30px, 40px);
+// -------------------------------------------------------
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}

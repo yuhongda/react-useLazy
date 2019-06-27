@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// Box-sizing
+// Usage: @include box-sizing();
+// --------------------------------------------------
+
+// box-sizing
+@mixin box-sizing($type: border-box) {
+  // content-box | border-box | inherit
+  @include prefixes(box-sizing, $type, webkit moz spec);
+}

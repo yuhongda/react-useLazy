@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+// Transform
+// @transform: none | <transform-function> [ <transform-function> ]
+// Usage: @include transform(rotate(-3deg) scale(0.9));
+//        @include transform-origin(50% 100%);
+//        @include transform-style(preserve-3d);
+// --------------------------------------------------
+
+@mixin transform($property: none) {
+  // none | <transform-function>
+  // transform: rotate | scale | skew | translate | matrix
+  @include prefixes(transform, $property, webkit spec);
+}
+
+// 改变元素的中心点位置
+@mixin transform-origin($axes...) {
+  // x - left/0% | center/50% | right/100%  | length
+  // y - top/0%  | center/50% | bottom/100% | length
+  // z-axis -                                 length
+  @include prefixes(transform-origin, $axes, webkit spec);
+}
+
+// 使被转换的子元素保留其 3D 转换
+@mixin transform-style($style: flat) {
+  // flat | preserve-3d
+  @include prefixes(transform-style, $style, webkit spec);
+}

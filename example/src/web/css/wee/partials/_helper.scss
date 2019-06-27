@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Wee – helper
+// ==========================================================================
+
+// General Resets
+.no-margin { margin: 0; }
+.no-padding { padding: 0; }
+.no-float { float: none; }
+.no-bg { background: transparent; }
+.no-border { border: 0; }
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+// float
+.fl { float: left; }
+.fr { float: right; }
