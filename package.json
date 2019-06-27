@@ -1,0 +1,35 @@
+{
+  "name": "react-uselazy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel -d dist/ src/"
+  },
+  "keywords": [
+    "jsx",
+    "babel",
+    "react"
+  ],
+  "author": "yu.hongda",
+  "license": "MIT",
+  "dependencies": {
+    "require-resolve": "0.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "create-react-class": "^15.6.3",
+    "mocha": "^5.2.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuhongda/react-useLazy.git"
+  }
+}
