@@ -16,7 +16,7 @@ module.exports = merge(config, {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    filename: 'react-useLazy.js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'useLazy',
     libraryTarget: 'umd',
