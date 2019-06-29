@@ -29,6 +29,8 @@ function useLazy(components, chunkNumber = 5, styles) {
   const lastChunkIdList = useRef(chunkIdList);
   const lastCurrentIdList = useRef(currentIdList);
 
+  let _timeId = null;
+
   // update last value
   useEffect(
     () => {
@@ -88,8 +90,14 @@ function useLazy(components, chunkNumber = 5, styles) {
   )
     
   function handleScroll(e) {
-    const _currentIdList = lastChunkIdList.current.find(idList => idList.indexOf(getIdInWindow(lastIds.current)) != -1);
-    setCurrentIdList(_currentIdList);
+    if(_timeId){
+      window.clearTimeout(_timeId);
+    }
+
+    _timeId = window.setTimeout(() => {
+      const _currentIdList = lastChunkIdList.current.find(idList => idList.indexOf(getIdInWindow(lastIds.current)) != -1);
+      setCurrentIdList(_currentIdList);
+    }, 500);
   }
 
   return [ lazyComponents ];
