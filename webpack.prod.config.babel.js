@@ -18,7 +18,7 @@ module.exports = merge(config, {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'react-uselazy',
+    library: 'useLazy',
     libraryTarget: 'commonjs',
     // globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
