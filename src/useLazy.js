@@ -10,8 +10,9 @@ import { getIdInWindow, chunkArray } from './utils'
  * @param {component array} components 
  * @param {use to divide components into chunk} chunkNumber 
  * @param {wrap styles} styles 
+ * @param {loading component} loadingComponent 
  */
-function useLazy(components, chunkNumber = 5, styles) {
+function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div style={{height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>loading...</div>) {
 
   // id list of LazyComp list
   const [ ids, setIds ] = useState([]);
@@ -59,7 +60,7 @@ function useLazy(components, chunkNumber = 5, styles) {
     () => {
       setLazyComponents(components && components.map((comp, i) => {
         return (
-          <LazyComp key={i} id={lastIds.current[i]} isShowContent={lastCurrentIdList.current.indexOf(lastIds.current[i]) != -1} styles={styles}>
+          <LazyComp key={i} id={lastIds.current[i]} loadingComponent={loadingComponent} isShowContent={lastCurrentIdList.current.indexOf(lastIds.current[i]) != -1} styles={styles}>
             { comp }
           </LazyComp>
         )

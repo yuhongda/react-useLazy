@@ -21,7 +21,7 @@ export default inject(
       [1,2,3,4,5,6,7,8,9,10].map((item, i) => <div style={{ fontSize: '100px', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><b>{i}</b></div>), 
       5,
       {
-        minHeight: '500px',
+        height: '500px',
         backgroundColor:'rgba(0,0,0,.2)',
         marginTop:'20px'
       }
