@@ -40,8 +40,9 @@ Options
  * @param {component array} components 
  * @param {use to divide components into chunk} chunkNumber 
  * @param {wrap styles} styles 
+ * @param {loading component} loadingComponent 
  */
-function useLazy(components, chunkNumber = 5, styles) {
+function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div style={{height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>loading...</div>) {
 }
 ```
 
