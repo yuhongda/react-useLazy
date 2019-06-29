@@ -1,59 +1,100 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import uuidv1 from 'uuid/v1'
+import uuidv5 from 'uuid/v5'
+import hash from 'object-hash'
+import LazyComp from './LazyComp';
+import { getIdInWindow, chunkArray } from './utils'
 
-function chunkArray(array, size) {
-    const chunked_arr = [];
-    let index = 0;
-    while (index < array.length) {
-        chunked_arr.push(array.slice(index, size + index));
-        index += size;
-    }
-    return chunked_arr;
-}
+/**
+ * useLazy Custom Hook
+ * @param {component array} components 
+ * @param {use to divide components into chunk} chunkNumber 
+ * @param {wrap styles} styles 
+ */
+function useLazy(components, chunkNumber = 5, styles) {
 
-function useLazy(report) {
-    const reportDataKeyList = chunkArray(report.reportData && report.reportData.map(item => item.key), 5);
-    // const [ currentKeyList, setCurrentKeyList ] = useState([]);
+  // id list of LazyComp list
+  const [ ids, setIds ] = useState([]);
 
-    useEffect(
-        () => {
-            window.addEventListener('scroll', handleScroll);
-            return () => {
-                window.removeEventListener('scroll', handleScroll);
-            }
-        }
-    )
+  // render result
+  const [ lazyComponents, setLazyComponents ] = useState([]);
 
-    function getKeyInWindow() {
-        const _itemInWindow = report.reportData.find(item => {
-            const el = document.getElementById(item.key);
-            if(!el) {
-                return false
-            }
-            const scrollTop = window.pageYOffset;
-            const pageHeight = el.offsetTop;
-            if(scrollTop + window.innerHeight > pageHeight && scrollTop < pageHeight + window.innerHeight) {
-                return true
-            }else{
-                return false
-            }
-        })
-        return _itemInWindow && _itemInWindow.key
-    }
+  // split 'ids' by 'chunkNumber'
+  const [ chunkIdList, setChunkIdList ] = useState([]);
+
+  // current chunk that show in window
+  const [ currentIdList, setCurrentIdList ] = useState([]);
+
+  const lastIds = useRef(ids);
+  const lastChunkIdList = useRef(chunkIdList);
+  const lastCurrentIdList = useRef(currentIdList);
+
+  // update last value
+  useEffect(
+    () => {
+      lastIds.current = ids;
+      lastChunkIdList.current = chunkIdList;
+      lastCurrentIdList.current = currentIdList;
+    },
+    [hash(ids), hash(chunkIdList), hash(currentIdList)]
+  )
+
+  // generate ids
+  useEffect(
+    () => {
+      const _ids = [];
+      components && components.map((comp, i) => {
+        const id = `lazy_comp_${uuidv5(`lazy_comp${i}`, uuidv1())}`;
+        _ids.push(id);
+      });
+      setIds(_ids);
+    },
+    [components.length, chunkNumber]
+  )
+
+  // wrap components with 'LazyComp'
+  useEffect(
+    () => {
+      setLazyComponents(components && components.map((comp, i) => {
+        return (
+          <LazyComp key={i} id={lastIds.current[i]} isShowContent={lastCurrentIdList.current.indexOf(lastIds.current[i]) != -1} styles={styles}>
+            { comp }
+          </LazyComp>
+        )
+      }));
+      const _chunkIdList = chunkArray(lastIds.current, chunkNumber);
+      setChunkIdList(_chunkIdList);
+    },
+    [components.length, chunkNumber, hash(ids), hash(currentIdList)]
+  )
+
+  // for the FIRST render
+  useEffect(
+    () => {
+      setCurrentIdList(chunkArray(lastIds.current, chunkNumber)[0] || []);
+    },
+    [hash(ids)]
+  )
     
-    function handleScroll(e) {
-        const _currentKeyList = reportDataKeyList.find(keyList => keyList.indexOf(getKeyInWindow()) != -1);
-        report.setCurrentKeyList(_currentKeyList || [])
+  // scroll event
+  useEffect(
+    () => {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      }
+    },
+    [components.length, chunkNumber]
+  )
+    
+  function handleScroll(e) {
+    const _currentIdList = lastChunkIdList.current.find(idList => idList.indexOf(getIdInWindow(lastIds.current)) != -1);
+    setCurrentIdList(_currentIdList);
+  }
 
-        // if(currentKeyList.indexOf(dataItem.key) != -1){
-        //     setIsShowSlide(true)
-        // } else {
-        //     setIsShowSlide(false)
-        // }
-    }
-
-    // return currentKeyList;
+  return [ lazyComponents ];
 }
 
 export {
-    useLazy
+  useLazy
 }

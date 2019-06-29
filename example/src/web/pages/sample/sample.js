@@ -11,12 +11,22 @@ import AnalysisGather from '../../../utils/analysis';
 import { debounce } from '../../misc/util'
 import inject from '../../../utils/mobx-react-inject'
 
-import { useLazy } from '../../../../../src/index'
+// import { useLazy } from '../../../../../src/index'
+import { useLazy } from '../../../../../dist/react-useLazy'
 
 export default inject(
   props => {
     const { store: { sample } } = props;
-    
+
+    const [ lazyComponents ] = useLazy(
+      [1,2,3,4,5,6,7,8,9,10].map((item, i) => <div style={{ fontSize: '100px', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><b>{i}</b></div>), 
+      5,
+      {
+        minHeight: '500px',
+        backgroundColor:'rgba(0,0,0,.2)',
+        marginTop:'20px'
+      }
+    );
     return (
       <div className={styles.sample}>
         <div className={styles.pageCnt}>
@@ -26,8 +36,8 @@ export default inject(
                 </Breadcrumb>
             </div>
             <div className={styles.testDiv}>
-            test
             </div>
+            {lazyComponents}
         </div>
       </div>
     )
