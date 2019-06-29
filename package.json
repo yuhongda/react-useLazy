@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "cross-env webpack-dev-server --hot --reload --config webpack.dev.config.babel.js",
-    "build": "npm run clean | cross-env webpack --progress --config webpack.prod.config.babel.js",
+    "build": "npm run clean | babel -d dist/ src/",
     "clean": "rimraf ./dist/*"
   },
   "keywords": [
