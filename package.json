@@ -1,6 +1,6 @@
 {
   "name": "react-uselazy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a custom hook for multiple components lazy load",
   "main": "dist/index.js",
   "scripts": {
