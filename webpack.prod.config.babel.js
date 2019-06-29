@@ -19,7 +19,7 @@ module.exports = merge(config, {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'useLazy',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
     // globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
   externals: {
