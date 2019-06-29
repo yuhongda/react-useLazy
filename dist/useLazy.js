@@ -34,10 +34,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  * @param {component array} components 
  * @param {use to divide components into chunk} chunkNumber 
  * @param {wrap styles} styles 
+ * @param {loading component} loadingComponent 
  */
 function useLazy(components) {
   var chunkNumber = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
   var styles = arguments.length > 2 ? arguments[2] : undefined;
+  var loadingComponent = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _react.default.createElement("div", {
+    style: {
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  }, "loading...");
 
   // id list of LazyComp list
   var _useState = (0, _react.useState)([]),
@@ -65,7 +74,8 @@ function useLazy(components) {
 
   var lastIds = (0, _react.useRef)(ids);
   var lastChunkIdList = (0, _react.useRef)(chunkIdList);
-  var lastCurrentIdList = (0, _react.useRef)(currentIdList); // update last value
+  var lastCurrentIdList = (0, _react.useRef)(currentIdList);
+  var _timeId = null; // update last value
 
   (0, _react.useEffect)(function () {
     lastIds.current = ids;
@@ -88,6 +98,7 @@ function useLazy(components) {
       return _react.default.createElement(_LazyComp.default, {
         key: i,
         id: lastIds.current[i],
+        loadingComponent: loadingComponent,
         isShowContent: lastCurrentIdList.current.indexOf(lastIds.current[i]) != -1,
         styles: styles
       }, comp);
@@ -110,11 +121,17 @@ function useLazy(components) {
   }, [components.length, chunkNumber]);
 
   function handleScroll(e) {
-    var _currentIdList = lastChunkIdList.current.find(function (idList) {
-      return idList.indexOf((0, _utils.getIdInWindow)(lastIds.current)) != -1;
-    });
+    if (_timeId) {
+      window.clearTimeout(_timeId);
+    }
 
-    setCurrentIdList(_currentIdList);
+    _timeId = window.setTimeout(function () {
+      var _currentIdList = lastChunkIdList.current.find(function (idList) {
+        return idList.indexOf((0, _utils.getIdInWindow)(lastIds.current)) != -1;
+      });
+
+      setCurrentIdList(_currentIdList);
+    }, 500);
   }
 
   return [lazyComponents];

@@ -12,11 +12,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var LazyComp = function LazyComp(props) {
   var id = props.id,
       isShowContent = props.isShowContent,
-      styles = props.styles;
+      styles = props.styles,
+      loadingComponent = props.loadingComponent;
   return _react.default.createElement("div", {
     id: id,
     style: styles
-  }, isShowContent ? props.children : '');
+  }, isShowContent ? props.children : loadingComponent);
 };
 
 var _default = LazyComp;
