@@ -8,7 +8,7 @@ Install
 
 ```javascript
 
-npm i react-useLazy
+npm i react-uselazy -S
 
 ```
 
