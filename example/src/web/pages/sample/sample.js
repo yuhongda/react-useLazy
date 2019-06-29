@@ -11,8 +11,7 @@ import AnalysisGather from '../../../utils/analysis';
 import { debounce } from '../../misc/util'
 import inject from '../../../utils/mobx-react-inject'
 
-// import { useLazy } from '../../../../../src/index'
-import { useLazy } from '../../../../../dist/react-useLazy'
+import { useLazy } from '../../../../../src/index'
 
 export default inject(
   props => {
