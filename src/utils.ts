@@ -1,4 +1,4 @@
-function getIdInWindow(ids = []) {
+function getIdInWindow(ids: Array<string> = []): string {
   const _idInWindow = ids.find(id => {
       const el = document.getElementById(id);
       if(!el) {
@@ -15,7 +15,7 @@ function getIdInWindow(ids = []) {
   return _idInWindow
 }
 
-function chunkArray(array, size) {
+function chunkArray(array: Array<string>, size: number) {
   const chunked_arr = [];
   let index = 0;
   while (index < array.length) {

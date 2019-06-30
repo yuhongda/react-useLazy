@@ -41,17 +41,13 @@ module.exports = merge(config, {
     rules: [{
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader?cacheDirectory',
-        options: {
-          presets: ['react', ['es2015', { modules: false }], 'es2016'],
-          // plugins: ['transform-runtime', 'transform-class-properties']
-          cacheDirectory: true
+      use: [
+        {
+          loader: 'babel-loader?cacheDirectory',
+        },
+        {
+          loader: 'ts-loader'
         }
-      },
-      {
-        loader: 'ts-loader'
-      }
       ]
     },
     {

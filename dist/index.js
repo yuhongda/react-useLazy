@@ -1,13 +1,5 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "useLazy", {
-  enumerable: true,
-  get: function get() {
-    return _useLazy.useLazy;
-  }
-});
-
-var _useLazy = require("./useLazy");
+Object.defineProperty(exports, "__esModule", { value: true });
+var useLazy_1 = require("./useLazy");
+exports.useLazy = useLazy_1.useLazy;
+//# sourceMappingURL=index.js.map
