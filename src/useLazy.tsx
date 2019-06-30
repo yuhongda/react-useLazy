@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import uuidv1 from 'uuid/v1'
-import uuidv5 from 'uuid/v5'
-import hash from 'object-hash'
+import * as React from "react";
+import { useState, useEffect, useRef } from 'react';
+import * as uuidv1 from 'uuid/v1'
+import * as uuidv5 from 'uuid/v5'
+import * as hash from 'object-hash'
 import LazyComp from './LazyComp';
 import { getIdInWindow, chunkArray } from './utils'
 
@@ -12,7 +13,11 @@ import { getIdInWindow, chunkArray } from './utils'
  * @param {wrap styles} styles 
  * @param {loading component} loadingComponent 
  */
-function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div style={{height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>loading...</div>) {
+function useLazy(
+  components: Array<React.ReactElement>, 
+  chunkNumber: number = 5, 
+  styles: object, 
+  loadingComponent: React.ReactNode = <div style={{height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>loading...</div>): Array<React.ReactNode> {
 
   // id list of LazyComp list
   const [ ids, setIds ] = useState([]);
@@ -30,7 +35,7 @@ function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div st
   const lastChunkIdList = useRef(chunkIdList);
   const lastCurrentIdList = useRef(currentIdList);
 
-  let _timeId = null;
+  let _timeId: number = null;
 
   // update last value
   useEffect(
@@ -45,9 +50,9 @@ function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div st
   // generate ids
   useEffect(
     () => {
-      const _ids = [];
-      components && components.map((comp, i) => {
-        const id = `lazy_comp_${uuidv5(`lazy_comp${i}`, uuidv1())}`;
+      const _ids: string[] = [];
+      components && components.forEach((comp, i) => {
+        const id = `lazy_comp_${comp.type}_${uuidv5(`lazy_comp${i}`, uuidv1())}`;
         _ids.push(id);
       });
       setIds(_ids);
@@ -90,7 +95,7 @@ function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div st
     [components.length, chunkNumber]
   )
     
-  function handleScroll(e) {
+  function handleScroll() {
     if(_timeId){
       window.clearTimeout(_timeId);
     }

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
-const LazyComp = props => {
+const LazyComp = (props: any) => {
   const { id, isShowContent, styles, loadingComponent } = props;
 
   return (
