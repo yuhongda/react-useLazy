@@ -49,7 +49,7 @@ function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div st
 
 Example
 -----
-![](useLazy.gif)
+<img width="600" alt="screen shot 2016-12-28 at 11 45 57 pm" src="useLazy.gif">
 ```javascript
 export default inject(
   props => {
