@@ -49,6 +49,7 @@ function useLazy(components, chunkNumber = 5, styles, loadingComponent = <div st
 
 Example
 -----
+![](useLazy-720.gif)
 ```javascript
 export default inject(
   props => {
