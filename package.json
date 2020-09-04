@@ -84,7 +84,7 @@
     "mobx-state-tree": "^3.10.0",
     "mocha": "^5.2.0",
     "moment": "^2.24.0",
-    "node-sass": "^3.13.1",
+    "node-sass": "^4.13.1",
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.5",
